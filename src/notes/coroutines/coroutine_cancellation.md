@@ -64,4 +64,22 @@ Any attempt to use a suspending function in the finally block of the previous ex
  }
 ```
 
+## TimeOut
 
+- Wrap in withTimeout
+- It throws TimeoutCancellationException which is child of CancellationException. 
+- If running within another coroutinescope then it this silently fails as CancellationException is normal failure for coroutine. 
+
+```
+ runBlocking {
+      withTimeout(500) {
+          launch {
+              repeat(1000) {
+                  println("I am running ... ${it}")
+                  delay(200)
+              }
+          }
+      }
+  }
+}
+```
