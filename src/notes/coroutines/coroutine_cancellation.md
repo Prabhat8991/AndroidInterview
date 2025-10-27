@@ -83,3 +83,5 @@ Any attempt to use a suspending function in the finally block of the previous ex
   }
 }
 ```
+
+- Timeout event in withTimeout is async that means it can even happen just before withTimeout returns. So close resources if required in finally 
